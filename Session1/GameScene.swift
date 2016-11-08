@@ -41,10 +41,11 @@ class GameScene: SKScene {
     
     func addPlayer() {
         player.position = CGPoint(x: self.size.width/2, y: player.size.height/2)
-       
+        //bullet Forever
         let shootAction = SKAction.run(addBullet)
         let shootActionWithDelay = SKAction.sequence([shootAction, SKAction.wait(forDuration: 0.1)])
         let shootActionForever = SKAction.repeatForever(shootActionWithDelay)
+        //Limiting the player-area
         let PlayerLimitnessAreaX = SKRange(lowerLimit: 0 , upperLimit: size.width)
         let PlayerLimitnessAreaY = SKRange(lowerLimit: 0, upperLimit: size.height)
         let retrisctionMove = SKConstraint.positionX(PlayerLimitnessAreaX, y : PlayerLimitnessAreaY)
@@ -66,9 +67,10 @@ class GameScene: SKScene {
         self.addChild(enemy)
     }
     func addEnemy()  {
+        //random the position's enemy
         let randomEnemyPosition = GKRandomDistribution(lowestValue : 0, highestValue: 414)
         let position = CGFloat(randomEnemyPosition.nextInt())
-        enemy.position = CGPoint(x: position, y: (self.frame.size.height + enemy.size.height) )
+        enemy.position = CGPoint(x: position, y: (self.size.height + enemy.size.height) )
         
         
         let enemyMoveToBot = SKAction.moveTo(y: 0 , duration: Double(enemy.position.y) / ENEMY_SPEED)
