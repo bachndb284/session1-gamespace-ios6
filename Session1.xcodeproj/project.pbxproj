@@ -14,6 +14,17 @@
 		6924FC7E1DD0F67100E92155 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6924FC7C1DD0F67100E92155 /* Main.storyboard */; };
 		6924FC801DD0F67100E92155 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6924FC7F1DD0F67100E92155 /* Assets.xcassets */; };
 		6924FC831DD0F67100E92155 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6924FC811DD0F67100E92155 /* LaunchScreen.storyboard */; };
+		69DE79CA1DD75CBF0081B476 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DE79C91DD75CBF0081B476 /* GameOverScene.swift */; };
+		69DE79CC1DD75CDE0081B476 /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 69DE79CB1DD75CDE0081B476 /* GameOverScene.sks */; };
+		69DE79CE1DD76C5E0081B476 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 69DE79CD1DD76C5E0081B476 /* Fire.sks */; };
+		69DE79D21DD76DE30081B476 /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 69DE79D11DD76DE30081B476 /* Rain.sks */; };
+		69F45EB11DD4A85000E17805 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F45EB01DD4A85000E17805 /* utils.swift */; };
+		69F45EB41DD4BFF900E17805 /* PlayerBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F45EB31DD4BFF900E17805 /* PlayerBulletController.swift */; };
+		69F45EB71DD4C54600E17805 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F45EB61DD4C54600E17805 /* Constants.swift */; };
+		69F9F1351DD6FEEB00D5431A /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F1341DD6FEEB00D5431A /* Controller.swift */; };
+		69F9F1371DD703AB00D5431A /* EnemyBulletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F1361DD703AB00D5431A /* EnemyBulletController.swift */; };
+		69F9F1391DD7123800D5431A /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F1381DD7123800D5431A /* PlayerController.swift */; };
+		69F9F13B1DD71AD900D5431A /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F9F13A1DD71AD900D5431A /* EnemyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +37,17 @@
 		6924FC7F1DD0F67100E92155 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6924FC821DD0F67100E92155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6924FC841DD0F67100E92155 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69DE79C91DD75CBF0081B476 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		69DE79CB1DD75CDE0081B476 /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		69DE79CD1DD76C5E0081B476 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
+		69DE79D11DD76DE30081B476 /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
+		69F45EB01DD4A85000E17805 /* utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		69F45EB31DD4BFF900E17805 /* PlayerBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBulletController.swift; sourceTree = "<group>"; };
+		69F45EB61DD4C54600E17805 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		69F9F1341DD6FEEB00D5431A /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		69F9F1361DD703AB00D5431A /* EnemyBulletController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBulletController.swift; sourceTree = "<group>"; };
+		69F9F1381DD7123800D5431A /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		69F9F13A1DD71AD900D5431A /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +80,51 @@
 		6924FC711DD0F67100E92155 /* Session1 */ = {
 			isa = PBXGroup;
 			children = (
+				69DE79C81DD75C9D0081B476 /* SceneView */,
+				69F45EB51DD4C52B00E17805 /* Constants */,
+				69F45EB21DD4BFA200E17805 /* Controllers */,
 				6924FC721DD0F67100E92155 /* AppDelegate.swift */,
 				6924FC761DD0F67100E92155 /* Actions.sks */,
 				6924FC781DD0F67100E92155 /* GameScene.swift */,
 				6924FC7A1DD0F67100E92155 /* GameViewController.swift */,
 				6924FC7C1DD0F67100E92155 /* Main.storyboard */,
 				6924FC7F1DD0F67100E92155 /* Assets.xcassets */,
+				69F45EB01DD4A85000E17805 /* utils.swift */,
 				6924FC811DD0F67100E92155 /* LaunchScreen.storyboard */,
 				6924FC841DD0F67100E92155 /* Info.plist */,
 			);
 			path = Session1;
+			sourceTree = "<group>";
+		};
+		69DE79C81DD75C9D0081B476 /* SceneView */ = {
+			isa = PBXGroup;
+			children = (
+				69DE79C91DD75CBF0081B476 /* GameOverScene.swift */,
+				69DE79CB1DD75CDE0081B476 /* GameOverScene.sks */,
+				69DE79CD1DD76C5E0081B476 /* Fire.sks */,
+				69DE79D11DD76DE30081B476 /* Rain.sks */,
+			);
+			name = SceneView;
+			sourceTree = "<group>";
+		};
+		69F45EB21DD4BFA200E17805 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				69F9F1341DD6FEEB00D5431A /* Controller.swift */,
+				69F45EB31DD4BFF900E17805 /* PlayerBulletController.swift */,
+				69F9F1361DD703AB00D5431A /* EnemyBulletController.swift */,
+				69F9F1381DD7123800D5431A /* PlayerController.swift */,
+				69F9F13A1DD71AD900D5431A /* EnemyController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		69F45EB51DD4C52B00E17805 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				69F45EB61DD4C54600E17805 /* Constants.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +188,10 @@
 			files = (
 				6924FC7E1DD0F67100E92155 /* Main.storyboard in Resources */,
 				6924FC801DD0F67100E92155 /* Assets.xcassets in Resources */,
+				69DE79D21DD76DE30081B476 /* Rain.sks in Resources */,
 				6924FC831DD0F67100E92155 /* LaunchScreen.storyboard in Resources */,
+				69DE79CE1DD76C5E0081B476 /* Fire.sks in Resources */,
+				69DE79CC1DD75CDE0081B476 /* GameOverScene.sks in Resources */,
 				6924FC771DD0F67100E92155 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,9 +203,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F9F1371DD703AB00D5431A /* EnemyBulletController.swift in Sources */,
 				6924FC791DD0F67100E92155 /* GameScene.swift in Sources */,
+				69DE79CA1DD75CBF0081B476 /* GameOverScene.swift in Sources */,
+				69F9F13B1DD71AD900D5431A /* EnemyController.swift in Sources */,
+				69F9F1391DD7123800D5431A /* PlayerController.swift in Sources */,
+				69F45EB11DD4A85000E17805 /* utils.swift in Sources */,
 				6924FC7B1DD0F67100E92155 /* GameViewController.swift in Sources */,
+				69F45EB41DD4BFF900E17805 /* PlayerBulletController.swift in Sources */,
 				6924FC731DD0F67100E92155 /* AppDelegate.swift in Sources */,
+				69F45EB71DD4C54600E17805 /* Constants.swift in Sources */,
+				69F9F1351DD6FEEB00D5431A /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
