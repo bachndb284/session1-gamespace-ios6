@@ -43,4 +43,19 @@ extension SKAction {
         
     
     }
+    static func moveToRight (position : CGPoint, rect : CGRect, speed : CGFloat) -> SKAction{
+        let dx = rect.width
+        let dy = position.y
+        let distance = sqrt(dx*dx+dy*dy)
+        let time = distance/speed
+        return SKAction.move(to: CGPoint(x:rect.width, y:0), duration: TimeInterval(time))
+    }
+    
+    static func moveToLeft (position : CGPoint,  speed : CGFloat) -> SKAction{
+        let dx :CGFloat = 0
+        let dy = position.y
+        let distance = sqrt(dx*dx+dy*dy)
+        let time = distance/speed
+        return SKAction.move(to: CGPoint(x:0, y:0), duration: TimeInterval(time))
+    }
 }

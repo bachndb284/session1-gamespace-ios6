@@ -44,7 +44,7 @@ class PlayerController: Controller {
     func configShoot()  {
         let shootAction = SKAction.run {
 //            audioPlayer = AVAudioPlayer(contentsOf: fireSound, error :nil)
-            
+           
             let bulletController = PlayerBulletController()
             
             let startPosition = CGPoint(x: self.position.x, y: self.position.y + 0.5 * (self.height + bulletController.height)  )

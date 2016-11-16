@@ -18,7 +18,7 @@ class GameOverScene: SKScene {
         rain = SKEmitterNode(fileNamed:"Rain")
         rain.position = CGPoint(x: 0    , y : 1472 )
         rain.advanceSimulationTime(10)
-        
+        self.run(SKAction.playSoundFileNamed("gameover.mp3", waitForCompletion: false))
         self.addChild(rain)
         rain.zPosition = -1
     }

@@ -21,7 +21,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate{
   let PLAYER_SPEED      = 150.0
   let BULLET_SPEED      = 300.0
   let ENEMY_SPEED       = 100.0
-  let BULLETENEMY_SPEED = 150.0
+  let BULLETENEMY_SPEED = 50.0
   let playerController = PlayerController()
   var gameTimer : Timer!
   //var explore = SKAction
@@ -38,18 +38,63 @@ class GameScene: SKScene , SKPhysicsContactDelegate{
         
 //        addEnemyandBullet()
         addEnemies()
+        addCrossingLeftToRightEnemies()
+        addCrossingRightToLeftEnemies()
 //        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addEnemy), userInfo: nil, repeats: true)
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addEnemies), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addEnemies), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addCrossingLeftToRightEnemies), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(addCrossingRightToLeftEnemies), userInfo: nil, repeats: true)
         
         
                 }
     func addEnemies() -> Void {
         let enemyController = EnemyController()
-        let randomEnemiesPosition = GKRandomDistribution(lowestValue: 0, highestValue: 414)
-        let position = CGFloat(randomEnemiesPosition.nextInt())
-       enemyController.config(position: CGPoint(x: position , y : self.frame.size.height ), parent: self)
+        let randomEnemiesPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(self.size.width))
+        let position1 = CGFloat(randomEnemiesPosition.nextInt())
+        let enemy = enemyController.view
+        let enemyPosition = CGPoint(x: position1, y: self.size.height)
+        let moveToBottomAction = SKAction.moveToBot(position: enemyPosition, speed: CGFloat(ENEMY_SPEED))
+        enemy.run(SKAction.sequence([moveToBottomAction, SKAction.removeFromParent()]))
+//        let bulletStraightEnemy = EnemyBulletController()
+        
+//        
+//        let straightEnemyBullet = bulletStraightEnemy.view
+//        let moveBulletToBotAction = SKAction.moveToBot(position: enemyPosition,  speed : CGFloat(BULLETENEMY_SPEED))
+//        straightEnemyBullet.run(SKAction.sequence([moveBulletToBotAction, SKAction.removeFromParent()]))
+        enemyController.config(position: CGPoint(x: position1 , y : self.frame.size.height ), parent: self)
+//        bulletStraightEnemy.config(position: CGPoint(x :position1 , y : self.frame.size.height), parent: self)
          }
+    func addCrossingLeftToRightEnemies() -> Void {
+        let enemyController = EnemyController()
+        let randomCrossingEnemiesPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(self.size.height))
+        let position1 = CGFloat(randomCrossingEnemiesPosition.nextInt())
+        let enemy = enemyController.view
+        let enemyPosition = CGPoint(x: position1, y: self.size.height)
+        let moveLeftToRightAction = SKAction.moveToRight(position: enemyPosition, rect: self.frame, speed: CGFloat(ENEMY_SPEED))
+        enemy.run(SKAction.sequence([moveLeftToRightAction, SKAction.removeFromParent()]))
+//        let bulletCrossingEnemy = EnemyBulletController()
+//        let moveBulletLeftToRightAction = SKAction.moveToRight(position: position, rect: self.frame, speed: CGFloat(BULLETENEMY_SPEED))
+//        let crossingEnemyBullet = bulletCrossingEnemy.view
+//        crossingEnemyBullet.run(SKAction.sequence([moveBulletLeftToRightAction, SKAction.removeFromParent()]))
+        enemyController.config(position: CGPoint(x: position1 , y: self.frame.size.height), parent: self)
+    }
+    
+    func addCrossingRightToLeftEnemies() -> Void {
+        let enemyController = EnemyController()
+        let randomCrossingEnemiesPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(self.size.height))
+        let position1 = CGFloat(randomCrossingEnemiesPosition.nextInt())
+        let enemy = enemyController.view
+        let enemyPosition = CGPoint(x: position1, y: self.size.height)
+        let moveRightToLeftAction = SKAction.moveToLeft(position: enemyPosition,  speed: CGFloat(ENEMY_SPEED))
+        enemy.run(SKAction.sequence([moveRightToLeftAction, SKAction.removeFromParent()]))
+        //        let bulletCrossingEnemy = EnemyBulletController()
+        //        let moveBulletLeftToRightAction = SKAction.moveToRight(position: position, rect: self.frame, speed: CGFloat(BULLETENEMY_SPEED))
+        //        let crossingEnemyBullet = bulletCrossingEnemy.view
+        //        crossingEnemyBullet.run(SKAction.sequence([moveBulletLeftToRightAction, SKAction.removeFromParent()]))
+        enemyController.config(position: CGPoint(x: position1 , y: self.frame.size.height), parent: self)
+    }
+
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{
@@ -62,10 +107,10 @@ class GameScene: SKScene , SKPhysicsContactDelegate{
     }
     func addbackGround(){
         let background = SKSpriteNode(imageNamed:"background")
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-
-        let moveBackGround : SKAction = SKAction.moveTo(y: -background.size.height, duration: 100)
+        background.anchorPoint = CGPoint(x: 0, y: 0)
+        background.position = CGPoint(x: 0, y: 0)
+        background.zPosition = -1
+        let moveBackGround : SKAction = SKAction.moveTo(y: -background.size.height, duration: 50)
         background.run(moveBackGround)
         self.addChild(background)
 
@@ -89,14 +134,27 @@ class GameScene: SKScene , SKPhysicsContactDelegate{
                 nodeA?.removeFromParent()
                 nodeB?.removeFromParent()
                 
-    
-            }
+                    let explosion = SKEmitterNode(fileNamed: "Explosion")!
+                    explosion.position = (nodeA?.position)!
+                    self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+                    self.run(SKAction.wait(forDuration: 2)){
+                        explosion.removeFromParent()
+                    
+                    }
+                    self.addChild(explosion)
+
+                
+                            }
     
             if (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask) == (PLAYER_MASK | ENEMY_BULLET_MASK) {
                 nodeA?.removeFromParent()
                 nodeB?.removeFromParent()
+               
+                
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+             
+                
                 self.view?.presentScene(gameOver, transition: transition)
             }
     
@@ -110,6 +168,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate{
         func didEnd(_ contact: SKPhysicsContact) {
             
         }
+    
+
     
 //    func fire()  {
 //

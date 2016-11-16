@@ -5,24 +5,27 @@
 //  Created by Nguyen Bach on 11/12/16.
 //  Copyright © 2016 Nguyen Bach. All rights reserved.
 //
-
+import GameplayKit
 import SpriteKit
 
 class EnemyController: Controller {
     let SPEED : CGFloat = 250
-    let SHOOT_INTERVAL : Double = 1
+    let SHOOT_INTERVAL : Double = 2
     var enemy : SKSpriteNode!
 
     
     
     init() {
-        super.init(view : SKSpriteNode(texture: ENEMY_TEXTURE))
+        ENEMY_TEXTURE = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: ENEMY_TEXTURE) as! [SKTexture]
+        super.init(view : SKSpriteNode(texture: ENEMY_TEXTURE[0]))
         enemy = self.view
-        enemy.physicsBody = SKPhysicsBody(texture: ENEMY_TEXTURE, size: enemy.size)
+        enemy.physicsBody = SKPhysicsBody(texture: view.texture!, size: enemy.size)
         enemy.physicsBody?.categoryBitMask = ENEMY_MASK
         enemy.physicsBody?.contactTestBitMask = PLAYER_BULLET_MASK
         enemy.physicsBody?.collisionBitMask = 0
     }
+    
+    
     
     override func config(position: CGPoint, parent: SKNode) {
         super.config(position: position, parent : parent )
@@ -31,9 +34,12 @@ class EnemyController: Controller {
     }
     func configMove() {
 
-        let moveToBottomAction = SKAction.moveToBot(position: self.position, speed: SPEED)
-        self.view.run(SKAction.sequence([
-            moveToBottomAction, SKAction.removeFromParent()]))
+//        let moveToBottomAction = SKAction.moveToBot(position: self.position, speed: SPEED)
+//        self.view.run(SKAction.sequence([
+//            moveToBottomAction, SKAction.removeFromParent()]))
+//
+//        let moveToRightAction = SKAction.moveToRight(position: self.position, rect: parent.frame, speed: SPEED)
+//        self.view.run(SKAction.sequence([moveToRightAction, SKAction.removeFromParent()]))
     }
     func configShoot () -> Void{
         let ShootAction = SKAction.run { 

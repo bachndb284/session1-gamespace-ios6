@@ -12,6 +12,7 @@ class PlayerBulletController : Controller{
     //Constructor - ham tao
 //    let view: SKSpriteNode = SKSpriteNode(imageNamed: "bullet-double")
     let SPEED : CGFloat = 300
+    let PlayerfireSound = SKAction.playSoundFileNamed("fire.mp3" , waitForCompletion: false)
     
     init() {
         //goi gia tri tu ham me
@@ -36,7 +37,7 @@ class PlayerBulletController : Controller{
     override func config(position: CGPoint, parent: SKNode) {
         super.config(position: position, parent: parent)
         let moveToTopAction = SKAction.moveToTop(position: position, rect : parent.frame , speed : SPEED)
-              view.run(SKAction.sequence([moveToTopAction, SKAction.removeFromParent()]))
+              view.run(SKAction.sequence([ PlayerfireSound, moveToTopAction, SKAction.removeFromParent()]))
 
         
     }

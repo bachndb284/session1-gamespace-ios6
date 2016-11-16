@@ -15,6 +15,12 @@ let ENEMY_BULLET_MASK   = UInt32(1<<3)
 
 let PLAYER_BULLET_TEXTURE = SKTexture(imageNamed : "bullet-double")
 let ENEMY_BULLET_TEXTURE = SKTexture(imageNamed: "bulletEnemy")
-let PLAYER_TEXTURE = SKTexture(imageNamed: "plane2")
-let ENEMY_TEXTURE = SKTexture(imageNamed: "Bigenemy")
+let PLAYER_TEXTURE = SKTexture(imageNamed: "plane5")
+var ENEMY_TEXTURE = [enemyA, enemyB, enemyC]
+
+let enemyA = SKTexture(imageNamed: "plane1")
+let enemyB = SKTexture(imageNamed: "plane2")
+let enemyC = SKTexture(imageNamed: "plane3")
+
+
 //let GAMEOVER_SCENE_BUTTON = SKTexture(imageNamed: "RestartButton")
